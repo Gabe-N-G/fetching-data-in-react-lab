@@ -8,7 +8,8 @@ const index = async () =>{
             try {
                 const res = await fetch(BASE_URL)
                 const data = await res.json()
-                console.log('Data', data)
+                const results = data.results
+                console.log(results)
             } catch (err){
                 console.log(err)
             }

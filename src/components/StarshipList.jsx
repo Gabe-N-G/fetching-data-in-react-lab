@@ -1,4 +1,5 @@
 import React from 'react'
+import StarshipCard from './StarshipCard'
 
 const StarshipList = () => {
   return (
