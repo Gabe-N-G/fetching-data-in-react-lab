@@ -10,6 +10,7 @@ const index = async () =>{
                 const data = await res.json()
                 const results = data.results
                 console.log(results)
+                return results
             } catch (err){
                 console.log(err)
             }

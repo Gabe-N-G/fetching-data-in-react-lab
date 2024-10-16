@@ -20,11 +20,7 @@ const App = () => {
   useEffect(() =>{
     const fetchDefaultData = async () =>{
       const data = await index()
-      const ships = {
-        name : data.name,
-        starship_class : data.starship_class
-      }
-      addStarships(ships)
+      console.log(data)
     };
     fetchDefaultData()
   },[])
