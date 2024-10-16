@@ -20,7 +20,14 @@ const App = () => {
   useEffect(() =>{
     const fetchDefaultData = async () =>{
       const data = await index()
-      console.log(data)
+      const ships = data.map(ship => ({
+        name: ship.name,
+        starshipClass: ship.starship_class,
+        manufacturer: ship.manufacturer,
+        model: ship.model
+      }));
+      console.log(ships)
+      addStarships(ships)
     };
     fetchDefaultData()
   },[])
