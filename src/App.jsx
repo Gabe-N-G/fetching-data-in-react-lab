@@ -17,18 +17,6 @@ const App = () => {
 
   const [starships, addStarships] = useState([])
 
-  const fetchData = async (ship) => {
-    const myShip = await search(ship)
-    const foundShip =  {
-      name: myShip.name,
-      starshipClass: myShip.starship_class,
-      manufacturer: myShip.manufacturer,
-      model: myShip.model
-    }
-    console.log(foundShip)
-    //set ships to found ships here
-  }
-
 
   useEffect(() =>{
     const fetchDefaultData = async () =>{
@@ -45,10 +33,25 @@ const App = () => {
     fetchDefaultData()
   },[])
 
+  const fetchData = async (ship) => {
+    const myShip = await search(ship)
+    console.log(myShip)
+    const foundShip =  {
+      name: myShip[0].name,
+      starshipClass: myShip[0].starship_class,
+      manufacturer: myShip[0].manufacturer,
+      model: myShip[0].model
+    }
+    addStarships([foundShip])
+    //set ships to found ships here
+  }
+
+
+
   return (
     <>
       <StarshipSearch fetchData={fetchData}/>
-      <StarshipList starships={starships}/>
+      {starships.length > 0 && <StarshipList starships={starships}/>}
     </>
   );
 }

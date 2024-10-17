@@ -18,11 +18,13 @@ const index = async () =>{
 
 const search = async (ship) =>  {
     try {
-        console.log(ship)
+        // console.log(ship)
         const queryString = `/?search=${ship}`
         const res = await fetch(BASE_URL + queryString)
         const data = await res.json()
-        console.log('Data', data)
+        const results = data.results
+        console.log('Data', results)
+        return results
     } catch (err){
         console.log(err)
     }
