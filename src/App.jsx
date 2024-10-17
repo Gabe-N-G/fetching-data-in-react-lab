@@ -34,8 +34,8 @@ const App = () => {
 
   return (
     <>
-      <StarshipSearch/>
-      <StarshipList/>
+      <StarshipSearch starships={starships}/>
+      <StarshipList starships={starships}/>
     </>
   );
 }

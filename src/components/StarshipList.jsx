@@ -1,9 +1,15 @@
 import React from 'react'
 import StarshipCard from './StarshipCard'
 
-const StarshipList = () => {
+const StarshipList = (props) => {
   return (
-    <div>StarshipList</div>
+    
+        props.starships.map( ship => (
+          <ul>
+            <li><StarshipCard ship={ship} /></li>
+          </ul>
+        ))
+    
   )
 }
 
