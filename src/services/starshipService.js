@@ -18,7 +18,8 @@ const index = async () =>{
 
 const search = async (ship) =>  {
     try {
-        const queryString = `?search=${ship}`
+        console.log(ship)
+        const queryString = `/?search=${ship}`
         const res = await fetch(BASE_URL + queryString)
         const data = await res.json()
         console.log('Data', data)
@@ -27,4 +28,3 @@ const search = async (ship) =>  {
     }
 }
 
-index()

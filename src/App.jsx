@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import StarshipSearch from './components/StarshipSearch';
 import StarshipList from './components/StarshipList';
-import { index } from './services/starshipService';
+import { index, search } from './services/starshipService';
 
 // As a user, I should see a list of starship cards when the site loads. The list should also indicate the number of results that are being displayed currently.
 
@@ -17,6 +17,19 @@ const App = () => {
 
   const [starships, addStarships] = useState([])
 
+  const fetchData = async (ship) => {
+    const myShip = await search(ship)
+    const foundShip =  {
+      name: myShip.name,
+      starshipClass: myShip.starship_class,
+      manufacturer: myShip.manufacturer,
+      model: myShip.model
+    }
+    console.log(foundShip)
+    //set ships to found ships here
+  }
+
+
   useEffect(() =>{
     const fetchDefaultData = async () =>{
       const data = await index()
@@ -26,7 +39,7 @@ const App = () => {
         manufacturer: ship.manufacturer,
         model: ship.model
       }));
-      console.log(ships)
+      // console.log(ships)
       addStarships(ships)
     };
     fetchDefaultData()
@@ -34,7 +47,7 @@ const App = () => {
 
   return (
     <>
-      <StarshipSearch starships={starships}/>
+      <StarshipSearch fetchData={fetchData}/>
       <StarshipList starships={starships}/>
     </>
   );
